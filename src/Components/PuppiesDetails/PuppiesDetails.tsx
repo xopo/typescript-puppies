@@ -32,6 +32,4 @@ const mapStateToProps = (state: AppState) => ({
     puppies: state.puppies
 });
 
-
-
 export default connect(mapStateToProps)(PuppiesDetails);

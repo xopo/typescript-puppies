@@ -1,19 +1,18 @@
-import { ADD_REQUEST, GET_PUPPIES, ADD_PUPPY, RECEIVED_REQUEST } from './const';
-export interface APuppy {
-    id: number;
+import { GET_PUPPIES, ADD_PUPPY } from './const';
+
+export interface NewPuppy {
     name: string;
     type: string;
-    adopted: boolean;
 }
 
 export type Puppies = Array<APuppy>
 
-export type NewPuppy = APuppy & { id?: number};
+export type APuppy = NewPuppy & { id: number, adopted: boolean};
 
-type Payload = string | Puppies;
+type Payload = string | Puppies | APuppy | NewPuppy;
 
 export interface ActionType {
-    type: typeof ADD_PUPPY | typeof ADD_REQUEST | typeof RECEIVED_REQUEST |  typeof GET_PUPPIES,
+    type: typeof ADD_PUPPY | typeof GET_PUPPIES ,
     payload: Payload
 }
 

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, MouseEvent } from 'react';
+import { addPuppy } from '../Store/Actions';
+import { NewPuppy } from '../Types/Types';
 import styled from 'styled-components';
 
 const StyledForm = styled.form`
@@ -45,9 +47,29 @@ const AddForm: React.FC = () => {
                     onChange={(e) => typeChange(e.target.value)} 
                 />
             </label>
-            <input type="submit" name="submit" value="Add puppy"/>
+            <input 
+                type="button" 
+                name="submit" 
+                disabled={ disableButton(name, type)}
+                onClick={ (e) => clickMe(e, name, type) }
+                value="Add puppy"/>
         </StyledForm>
     );
 };
+
+const clickMe = (e: MouseEvent, name:string, type: string): void => {
+    e.preventDefault();
+    e.stopPropagation();
+    const newPup = {
+        name, 
+        type
+    };
+    
+    addPuppy(newPup);
+}
+
+const disableButton = (name:string, type:string):boolean|undefined => {
+    return Boolean(name.length === 0 && type.length === 0); 
+}
 
 export default AddForm;
