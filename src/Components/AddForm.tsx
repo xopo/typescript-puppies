@@ -10,11 +10,17 @@ const StyledForm = styled.form`
         margin-top: 5px;
         padding: 5px;
         line-height: 2;
-        input {
+        input[type=text] {
             margin-left: auto;
         }
     }
-`
+    input[type=submit] {
+        margin:0 0 0 auto;
+        width: 175px;
+        margin-top: 5px;
+        display: block;
+    }
+`;
 
 const AddForm: React.FC = () => {
     const [name, nameChange] = useState('test name');
@@ -39,6 +45,7 @@ const AddForm: React.FC = () => {
                     onChange={(e) => typeChange(e.target.value)} 
                 />
             </label>
+            <input type="submit" name="submit" value="Add puppy"/>
         </StyledForm>
     );
 };

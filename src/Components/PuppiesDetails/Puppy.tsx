@@ -23,7 +23,7 @@ const  Puppy:React.FC<APuppy> = props => {
         <StyledPuppy>
             <div>Name: <Link title={`navigate to ${name}`} to={`/${id}`}>{name}</Link></div>
             <div>Type: {type}</div>
-            <div>Adopted: <b>{adopted}</b></div>
+            <div>Adopted: <b>{adopted.toString()}</b></div>
         </StyledPuppy>
    )
 };

@@ -1,3 +1,4 @@
+import { ADD_REQUEST, GET_PUPPIES, ADD_PUPPY, RECEIVED_REQUEST } from './const';
 export interface APuppy {
     id: number;
     name: string;
@@ -9,10 +10,11 @@ export type Puppies = Array<APuppy>
 
 export type NewPuppy = APuppy & { id?: number};
 
-export const ADD_PUPPY = 'ADD_PUPPY';
+type Payload = string | Puppies;
 
-export const ADD_REQUEST = 'ADD_REQUEST';
+export interface ActionType {
+    type: typeof ADD_PUPPY | typeof ADD_REQUEST | typeof RECEIVED_REQUEST |  typeof GET_PUPPIES,
+    payload: Payload
+}
 
-export const RECEIVED_REQUEST = 'RECEIVED_REQUEST';
 
-export const GET_PUPPIES = 'GET_PUPPIES';
