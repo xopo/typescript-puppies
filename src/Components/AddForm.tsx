@@ -1,6 +1,6 @@
 import React, { useState, MouseEvent } from 'react';
 import { addPuppy } from '../Store/Actions';
-import { NewPuppy } from '../Types/Types';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 const StyledForm = styled.form`
@@ -24,9 +24,26 @@ const StyledForm = styled.form`
     }
 `;
 
-const AddForm: React.FC = () => {
-    const [name, nameChange] = useState('test name');
-    const [type, typeChange] = useState('ty');
+interface AddFormProps {
+    addPuppy: typeof addPuppy
+}
+
+const AddForm: React.FC<AddFormProps> = (props) => {
+    const [name, nameChange] = useState('');
+    const [type, typeChange] = useState('');
+
+    const clickMe = (e: MouseEvent, name:string, type: string): void => {
+        e.preventDefault();
+        e.stopPropagation();
+        const newPup = {
+            name, 
+            type
+        };
+        props.addPuppy(newPup);
+        nameChange('');
+        typeChange('');
+    }
+
     return (
         <StyledForm>
             <label>
@@ -50,26 +67,17 @@ const AddForm: React.FC = () => {
             <input 
                 type="button" 
                 name="submit" 
-                disabled={ disableButton(name, type)}
+                disabled={ disableButton(name, type) }
                 onClick={ (e) => clickMe(e, name, type) }
                 value="Add puppy"/>
         </StyledForm>
     );
 };
 
-const clickMe = (e: MouseEvent, name:string, type: string): void => {
-    e.preventDefault();
-    e.stopPropagation();
-    const newPup = {
-        name, 
-        type
-    };
-    
-    addPuppy(newPup);
-}
-
 const disableButton = (name:string, type:string):boolean|undefined => {
-    return Boolean(name.length === 0 && type.length === 0); 
+    return Boolean(name.trim().length < 2 || type.trim().length < 3); 
 }
 
-export default AddForm;
+
+
+export default connect(null, { addPuppy })(AddForm);

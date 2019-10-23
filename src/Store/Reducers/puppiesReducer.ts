@@ -2,17 +2,15 @@ import { NewPuppy } from './../../Types/Types';
 import { ActionType, Puppies } from '../../Types/Types';
 import * as types from '../../Types/const';
 import { PUPPIES as mockPuppies } from '../../mock.data';
-import store from '../store';
 
 const initialState: Puppies = mockPuppies;
-
 const puppies = (store = initialState, action: ActionType) => {
     switch (action.type) {
         case types.GET_PUPPIES: {
             return mockPuppies;
         }
         case types.ADD_PUPPY: {
-            const lastId = store[store.length -1].id;
+            const lastId = store.length && store[store.length -1].id || 1;
             const newPuppy = (action.payload as NewPuppy) || null;
             const puppy  = {
                 ...newPuppy,
@@ -22,6 +20,20 @@ const puppies = (store = initialState, action: ActionType) => {
             store.push(puppy);
             
             return store;
+        }
+        case types.DELETE_PUPPY: {
+            const newState = [...store];
+            const id = action.payload as number;
+            const index = newState.findIndex(puppy => puppy.id === id);
+            newState.splice(index, 1);
+            return newState;            
+        }
+        case types.ADOPT_PUPPY: {
+            const newState = [...store];
+            const id = action.payload as number;
+            const index = newState.findIndex(puppy => puppy.id === id);
+            newState[index].adopted = !newState[index].adopted
+            return newState;
         }
         default: {
             return store;
