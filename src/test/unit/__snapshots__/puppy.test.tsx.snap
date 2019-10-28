@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Puppy Component should render witout errors 1`] = `
+<styled.div>
+  <div>
+    Name: 
+    <Link
+      title="navigate to Bob"
+      to="/3"
+    >
+      Bob
+    </Link>
+  </div>
+  <div>
+    Type: 
+    canis
+  </div>
+  <div>
+    Adopted: 
+    <b>
+      false
+    </b>
+  </div>
+  <form>
+    <button
+      className="adopt"
+      onClick={[Function]}
+      type="button"
+    >
+      Adopt
+    </button>
+    <button
+      className="delete"
+      onClick={[Function]}
+      type="button"
+    >
+      Delete
+    </button>
+  </form>
+</styled.div>
+`;

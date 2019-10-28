@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { APuppy } from '../../Types/Types';
-import { ADOPT_PUPPY } from '../../Types/const';
 
 const StyledPuppy = styled.div`
     display: flex;
@@ -42,13 +41,16 @@ const  Puppy:React.FC<APuppy> = props => {
             <div>Type: {type}</div>
             <div>Adopted: <b>{adopted.toString()}</b></div>
             <form>
-                <button type='button'
+                <button 
+                    type='button' 
+                    className='adopt'
                     onClick={() => adoptPuppy && adoptPuppy(id)}
                 >
                     { adopted ? 'Cancel Adoption': 'Adopt' }
                 </button>
                 <button 
                     type='button'
+                    className='delete'
                     onClick={() => deletePuppy && deletePuppy(id)}
                 >Delete</button>
             </form>

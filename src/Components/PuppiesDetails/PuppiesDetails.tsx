@@ -10,6 +10,7 @@ const StyledContent = styled.div`
     max-width: 90%;
     height: auto;
     display: flex;
+    justify-content: center;
     flex-direction: row;
     margin: 0 auto;
     flex-wrap: wrap;
