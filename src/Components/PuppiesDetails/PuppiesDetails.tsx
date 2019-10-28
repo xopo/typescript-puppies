@@ -32,7 +32,7 @@ const PuppiesDetails: React.FC<PuppiesDetailsProps> = (props) => {
             { puppies && puppies.map((puppy: APuppy, key: number)=> (
                 <Puppy 
                     {...puppy} 
-                    key={key} 
+                    key={puppy.id} 
                     delete={onDelete}
                     adopt={onAdopt}
                 />) 

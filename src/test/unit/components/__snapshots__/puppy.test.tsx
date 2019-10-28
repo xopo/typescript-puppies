@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Puppy from '../../Components/PuppiesDetails/Puppy';
-import { APuppy } from '../../Types/Types';
+import Puppy from '../../../../Components/PuppiesDetails/Puppy';
+import { APuppy } from '../../../../Types/Types';
 
 const adopt = jest.fn();
 const del = jest.fn();
