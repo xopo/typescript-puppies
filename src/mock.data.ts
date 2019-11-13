@@ -17,7 +17,7 @@ export const PUPPIES: Puppies = [{
     adopted: true
 }];
 
-export const PupyType = [
+export const PupyTypes = [
     'German Shepherd', 'Golden Retriever', 'French Buldog',
     'Buldog', 'Beagle', 'Poodle', 'Rottweiler', 'Yorkshire Terrier',
     'Dachshund', 'Siberian Husky', 'Great Dane', ' Doberman Pinsher'

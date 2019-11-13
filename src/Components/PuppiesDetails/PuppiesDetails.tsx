@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Puppy from './Puppy';
 import { Puppies, APuppy } from '../../Types/Types';
-import { deletePuppy, adoptPuppy } from '../../Store/Actions';
+import { deletePuppy, adoptPuppy, getPuppiesRequest } from '../../Store/Actions/actions';
 import { connect } from 'react-redux';
 import { AppState } from '../../Store/Reducers/mainReducer';
 
@@ -19,13 +19,16 @@ const StyledContent = styled.div`
 interface PuppiesDetailsProps {
     puppies: Puppies,
     deletePuppy: typeof deletePuppy,
-    adoptPuppy: typeof adoptPuppy
+    adoptPuppy: typeof adoptPuppy,
 }
 
 const PuppiesDetails: React.FC<PuppiesDetailsProps> = (props) => {
     const { puppies } = props;
-    const onDelete = (id: number) => props.deletePuppy(id);
-    const onAdopt = (id: number) =>  props.adoptPuppy(id);
+    if (!puppies.length) {
+       getPuppiesRequest();
+    }
+    const onDelete = (id: number) => props.deletePuppy(id); 
+    const onAdopt = (id: number) =>  props.adoptPuppy(id); 
 
     return ( 
         <StyledContent>
@@ -45,4 +48,7 @@ const mapStateToProps = (state: AppState) => ({
     puppies: state.puppies
 });
 
-export default connect(mapStateToProps, { deletePuppy, adoptPuppy })(PuppiesDetails);
+export default connect(mapStateToProps, { 
+    deletePuppy,
+    adoptPuppy
+})(PuppiesDetails);

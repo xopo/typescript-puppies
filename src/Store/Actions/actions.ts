@@ -1,5 +1,11 @@
-import { ADD_PUPPY, DELETE_PUPPY, GET_PUPPIES, ADOPT_PUPPY } from '../../Types/const';
-import { ActionType, Puppies, NewPuppy, APuppy } from '../../Types/Types';
+import { 
+    ADD_PUPPY, 
+    DELETE_PUPPY, 
+    GET_PUPPIES, 
+    ADOPT_PUPPY,
+    PUPPIES_GET_REQUEST
+} from '../../Types/const';
+import { ActionType, Puppies, NewPuppy,  SagaAction } from '../../Types/Types';
 
 export function getPuppies(payload: Puppies): ActionType {
     return {
@@ -25,6 +31,13 @@ export function deletePuppy(payload: number): ActionType {
 export function adoptPuppy(payload: number): ActionType {
     return {
         type: ADOPT_PUPPY,
-        payload: payload
+        payload
+    }
+}
+
+export function getPuppiesRequest(payload: null = null): SagaAction {
+    return {
+        type: PUPPIES_GET_REQUEST,
+        payload
     }
 }

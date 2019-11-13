@@ -1,4 +1,4 @@
-import { GET_PUPPIES, ADD_PUPPY, DELETE_PUPPY, ADOPT_PUPPY } from './const';
+import { GET_PUPPIES, ADD_PUPPY, DELETE_PUPPY, ADOPT_PUPPY, PUPPIES_GET_REQUEST } from './const';
 
 export interface NewPuppy {
     name: string;
@@ -15,7 +15,7 @@ export type APuppy = NewPuppy & {
     adopt?: (id: number) => void
 };
 
-type Payload = string | Puppies | APuppy | NewPuppy | number;
+type Payload = string | Puppies | APuppy | NewPuppy | number | null;
 
 type ReduxType = typeof ADD_PUPPY | typeof GET_PUPPIES | typeof DELETE_PUPPY | typeof ADOPT_PUPPY;
 
@@ -24,4 +24,10 @@ export interface ActionType {
     payload: Payload
 }
 
+type  SagaType = typeof PUPPIES_GET_REQUEST;
+
+export interface SagaAction {
+    type: SagaType,
+    payload: Payload
+}
 

@@ -22,6 +22,12 @@ const StyledPuppy = styled.div`
         width: 45%;
         margin: 5px;
     }
+    .adopted b {
+        color: brown;
+    }
+    .available b {
+        color: green;
+    }
 `;
 
 
@@ -39,7 +45,9 @@ const  Puppy:React.FC<APuppy> = props => {
         <StyledPuppy>
             <div>Name: <Link title={`navigate to ${name}`} to={`/${id}`}>{name}</Link></div>
             <div>Type: {type}</div>
-            <div>Adopted: <b>{adopted.toString()}</b></div>
+            <div className={ adopted ? 'adopted' : 'available' }>
+                Adopted: <b>{adopted.toString()}</b>
+            </div>
             <form>
                 <button 
                     type='button' 

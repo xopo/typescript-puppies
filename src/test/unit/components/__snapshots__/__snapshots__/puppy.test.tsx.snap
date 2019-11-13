@@ -15,7 +15,9 @@ exports[`Puppy Component should render witout errors 1`] = `
     Type: 
     canis
   </div>
-  <div>
+  <div
+    className="available"
+  >
     Adopted: 
     <b>
       false

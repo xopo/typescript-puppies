@@ -1,5 +1,5 @@
 import React, { useState, MouseEvent } from 'react';
-import { addPuppy } from '../Store/Actions';
+import { addPuppy } from '../Store/Actions/actions';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 

@@ -1,16 +1,16 @@
 import { NewPuppy } from './../../Types/Types';
 import { ActionType, Puppies } from '../../Types/Types';
 import * as types from '../../Types/const';
-import { PUPPIES as mockPuppies } from '../../mock.data';
 
-const initialState: Puppies = mockPuppies;
+
+const initialState: Puppies = [];
 const puppies = (store = initialState, action: ActionType) => {
     switch (action.type) {
         case types.GET_PUPPIES: {
-            return mockPuppies;
+            return store;
         }
         case types.ADD_PUPPY: {
-            const lastId = store.length && store[store.length -1].id || 1;
+            const lastId = (store.length && store[store.length -1].id) || 1;
             const newPuppy = (action.payload as NewPuppy) || null;
             const puppy  = {
                 ...newPuppy,
