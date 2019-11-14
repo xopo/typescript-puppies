@@ -20,12 +20,13 @@ interface PuppiesDetailsProps {
     puppies: Puppies,
     deletePuppy: typeof deletePuppy,
     adoptPuppy: typeof adoptPuppy,
+    getPuppiesRequest: typeof getPuppiesRequest
 }
 
 const PuppiesDetails: React.FC<PuppiesDetailsProps> = (props) => {
     const { puppies } = props;
     if (!puppies.length) {
-       getPuppiesRequest();
+       props.getPuppiesRequest();
     }
     const onDelete = (id: number) => props.deletePuppy(id); 
     const onAdopt = (id: number) =>  props.adoptPuppy(id); 
@@ -50,5 +51,6 @@ const mapStateToProps = (state: AppState) => ({
 
 export default connect(mapStateToProps, { 
     deletePuppy,
-    adoptPuppy
+    adoptPuppy,
+    getPuppiesRequest,
 })(PuppiesDetails);

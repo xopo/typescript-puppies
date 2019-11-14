@@ -19,4 +19,4 @@ function* getPuppiesSaga() {
     yield takeEvery(PUPPIES_GET_REQUEST, getPuppiesApi);
 }
 
-export default getPuppiesSaga;
+export default getPuppiesSaga;  
