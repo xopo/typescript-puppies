@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Puppy from './Puppy';
 import { Puppies, APuppy } from '../../Types/Types';
-import { deletePuppy, adoptPuppy, getPuppiesRequest } from '../../Store/Actions/actions';
+import { deletePuppy, adoptPuppyRequest, getPuppiesRequest } from '../../Store/Actions/actions';
 import { connect } from 'react-redux';
 import { AppState } from '../../Store/Reducers/mainReducer';
 
@@ -19,38 +19,38 @@ const StyledContent = styled.div`
 interface PuppiesDetailsProps {
     puppies: Puppies,
     deletePuppy: typeof deletePuppy,
-    adoptPuppy: typeof adoptPuppy,
+    adoptPuppyRequest: typeof adoptPuppyRequest,
     getPuppiesRequest: typeof getPuppiesRequest
 }
 
 const PuppiesDetails: React.FC<PuppiesDetailsProps> = (props) => {
     const { puppies } = props;
-    if (!puppies.length) {
+    if ( !puppies.length ) {
        props.getPuppiesRequest();
     }
-    const onDelete = (id: number) => props.deletePuppy(id); 
-    const onAdopt = (id: number) =>  props.adoptPuppy(id); 
+    const onDelete = (id: number) => props.deletePuppy(id);
+    const onAdopt = (id: number) =>  props.adoptPuppyRequest(id);
 
-    return ( 
+    return (
         <StyledContent>
             { puppies && puppies.map((puppy: APuppy, key: number)=> (
-                <Puppy 
-                    {...puppy} 
-                    key={puppy.id} 
+                <Puppy
+                    {...puppy}
+                    key={puppy.id}
                     delete={onDelete}
                     adopt={onAdopt}
-                />) 
+                />)
             )}
         </StyledContent>
     );
 }
 
 const mapStateToProps = (state: AppState) => ({
-    puppies: state.puppies
+    puppies: state.puppiesReducer
 });
 
-export default connect(mapStateToProps, { 
+export default connect(mapStateToProps, {
     deletePuppy,
-    adoptPuppy,
+    adoptPuppyRequest,
     getPuppiesRequest,
 })(PuppiesDetails);

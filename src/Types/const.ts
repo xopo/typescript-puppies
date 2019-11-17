@@ -1,10 +1,10 @@
 export const ADD_PUPPY = 'ADD_PUPPY';
 
-export const GET_PUPPIES = 'GET_PUPPIES';
-
 export const DELETE_PUPPY = 'DELETE_PUPPY';
 
-export const ADOPT_PUPPY = 'ADOPT_PUPPY';
+export const ADOPT_PUPPY_REQUEST = 'ADOPT_PUPPY_REQUEST';
+
+export const ADOPT_PUPPY_SUCCESS = 'ADOPT_PUPPY_SUCCESS';
 
 export const PUPPIES_GET_REQUEST = 'PUPPIES_GET_REQUEST';
 

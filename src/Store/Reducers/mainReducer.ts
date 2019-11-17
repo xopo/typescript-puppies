@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import puppies from './puppiesReducer';
+import puppiesReducer from './puppiesReducer';
 
-export const rootReducer = combineReducers({ 
-    puppies 
+export const rootReducer = combineReducers({
+    puppiesReducer
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
