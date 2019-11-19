@@ -2,7 +2,8 @@ import {
     ADD_PUPPY,
     ADOPT_PUPPY_REQUEST,
     ADOPT_PUPPY_SUCCESS,
-    DELETE_PUPPY,
+    DELETE_PUPPY_REQUEST,
+    DELETE_PUPPY_SUCCESS,
     PUPPIES_GET_REQUEST,
     PUPPIES_GET_SUCCESS
 } from './const';
@@ -24,14 +25,14 @@ export type APuppy = NewPuppy & {
 
 type Payload = string | Puppies | APuppy | NewPuppy | number | null;
 
-type ReduxType = typeof ADD_PUPPY | typeof PUPPIES_GET_SUCCESS | typeof DELETE_PUPPY | typeof ADOPT_PUPPY_SUCCESS;
+type ReduxType = typeof ADD_PUPPY | typeof PUPPIES_GET_SUCCESS | typeof DELETE_PUPPY_SUCCESS | typeof ADOPT_PUPPY_SUCCESS;
 
 export interface ActionType {
     type: ReduxType,
     payload: Payload
 }
 
-type  SagaType = typeof PUPPIES_GET_REQUEST | typeof ADOPT_PUPPY_REQUEST;
+type  SagaType = typeof PUPPIES_GET_REQUEST | typeof ADOPT_PUPPY_REQUEST | typeof DELETE_PUPPY_REQUEST;
 
 export interface SagaAction {
     type: SagaType,

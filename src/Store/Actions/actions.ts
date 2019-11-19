@@ -1,6 +1,6 @@
+import { DELETE_PUPPY_REQUEST } from './../../Types/const';
 import {
     ADD_PUPPY,
-    DELETE_PUPPY,
     ADOPT_PUPPY_REQUEST,
     PUPPIES_GET_SUCCESS,
     PUPPIES_GET_REQUEST
@@ -21,9 +21,9 @@ export function addPuppy(payload: NewPuppy): ActionType {
     }
 }
 
-export function deletePuppy(payload: number): ActionType {
+export function deletePuppy(payload: number): SagaAction {
     return {
-        type: DELETE_PUPPY,
+        type: DELETE_PUPPY_REQUEST,
         payload: payload
     }
 }

@@ -1,5 +1,5 @@
 import { NewPuppy } from './../../Types/Types';
-import { ActionType, Puppies } from '../../Types/Types';
+import { ActionType, Puppies, APuppy } from '../../Types/Types';
 import * as types from '../../Types/const';
 
 
@@ -21,18 +21,18 @@ const puppiesReducer = (store = initialState, {type, payload}: ActionType) => {
 
             return store;
         }
-        case types.DELETE_PUPPY: {
+        case types.DELETE_PUPPY_SUCCESS: {
             const newState = [...store];
-            const id = payload as number;
+            const id = payload;
             const index = newState.findIndex(puppy => puppy.id === id);
             newState.splice(index, 1);
             return newState;
         }
         case types.ADOPT_PUPPY_SUCCESS: {
             const newState = [...store];
-            const id = payload as number;
-            const index = newState.findIndex(puppy => puppy.id === id);
-            newState[index].adopted = !newState[index].adopted
+            const returnedPuppy = payload as APuppy;
+            const index = newState.findIndex(puppy => puppy.id === returnedPuppy.id);
+            newState[index].adopted = returnedPuppy.adopted
             return newState;
         }
         default: {

@@ -11,7 +11,13 @@ const adoptPuppy = (id: number) => {
     return axios.patch(apiUrl);
 }
 
+const deletePuppy = (id: number) => {
+    const apiUrl = `${url}/puppy/${id}`;
+    return axios.delete(apiUrl);
+}
+
 export default {
     adoptPuppy,
+    deletePuppy,
     getPuppies
 };
